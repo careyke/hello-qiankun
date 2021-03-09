@@ -36,6 +36,7 @@ module.exports = merge(baseConfig, {
     hot: true,
     openPage: "index.html",
     publicPath: "/", // 需要配置，否则找不到目录
+    historyApiFallback: true,
     quiet: true,
     overlay: {
       warnings: true,

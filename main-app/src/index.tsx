@@ -2,7 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import App from "./App";
+import start from "./microApp";
 
-const root: Element | null = document.querySelector("#app");
+start();
+
+const root: Element | null = document.querySelector("#main-app");
 
 ReactDOM.render(<App />, root);

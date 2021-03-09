@@ -7,14 +7,19 @@ const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 // const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const baseConfig = require("./webpack.base.config");
+const packageName = require("../package.json").name;
 
 module.exports = merge(baseConfig, {
   mode: "development",
   devtool: "eval-cheap-module-source-map",
+  output: {
+    library: `${packageName}-[name]`,
+    libraryTarget: "umd",
+  },
   plugins: [
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
-        messages: ["You application is running here http://localhost:8000"],
+        messages: ["You application is running here http://localhost:8001"],
       },
     }),
     // new CopyWebpackPlugin({
@@ -31,12 +36,13 @@ module.exports = merge(baseConfig, {
   ],
   devServer: {
     contentBase: path.join(__dirname, "../dist"),
-    port: 8000,
+    port: 8001,
     compress: true,
     hot: true,
     openPage: "index.html",
     publicPath: "/", // 需要配置，否则找不到目录
     quiet: true,
+    historyApiFallback: true,
     overlay: {
       warnings: true,
       errors: true,
