@@ -21,12 +21,12 @@ export const bootstrap = async () => {
   console.log("react app bootstrap");
 };
 
-export const mount = (props: CommonObject) => {
+export const mount = async (props: CommonObject) => {
   render(props);
 };
 
-export const unmount = (props: CommonObject) => {
+export const unmount = async (props: CommonObject) => {
   const { container } = props;
-  const root = container ? container.querySelector("#root") : localRoot;
+  const root = container ? container.querySelector("#app") : localRoot;
   ReactDOM.unmountComponentAtNode(root);
 };

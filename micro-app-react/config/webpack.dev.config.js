@@ -47,5 +47,10 @@ module.exports = merge(baseConfig, {
       warnings: true,
       errors: true,
     },
+    // 解决跨域
+    headers: {
+      "Access-Control-Allow-Origin": "http://localhost:8000",
+      "Access-Control-Request-Method": "GET",
+    },
   },
 });

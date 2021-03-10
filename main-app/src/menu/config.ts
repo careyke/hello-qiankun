@@ -11,13 +11,13 @@ export const menuConfig: MenuOption[] = [
     to: "/",
   },
   {
-    key: "/react",
+    key: "/app/react",
     title: "React",
-    to: "/react",
+    to: "/app/react",
   },
   {
-    key: "/vue",
+    key: "app/vue",
     title: "Vue",
-    to: "/vue",
+    to: "/app/vue",
   },
 ];

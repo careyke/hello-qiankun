@@ -11,6 +11,9 @@ const baseConfig = require("./webpack.base.config");
 module.exports = merge(baseConfig, {
   mode: "development",
   devtool: "eval-cheap-module-source-map",
+  output: {
+    publicPath: "/",
+  },
   plugins: [
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {

@@ -18,6 +18,4 @@ addGlobalUncaughtErrorHandler((event) => {
   console.log(event);
 });
 
-window.__POWERED_BY_QIANKUN__ = true;
-
 export default start;

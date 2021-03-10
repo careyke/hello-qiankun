@@ -1,9 +1,9 @@
 import React, { FC } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import classes from "./App.less";
 import AppMenu from "./menu/index";
-import MainRoute from "./routes/index";
+import AppRoute from "./routes";
 
 const App: FC = () => {
   return (
@@ -12,10 +12,8 @@ const App: FC = () => {
         <div className={classes.left}>
           <AppMenu />
         </div>
-        <div className={classes.right} id="micro-app-container">
-          <Route path="/">
-            <MainRoute />
-          </Route>
+        <div className={classes.right}>
+          <AppRoute />
         </div>
       </div>
     </Router>
