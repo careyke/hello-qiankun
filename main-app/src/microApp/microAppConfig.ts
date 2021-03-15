@@ -7,4 +7,10 @@ export const microAppOptions: RegistrableApp<CommonObject>[] = [
     container: "#micro-app-container",
     activeRule: "/app/react",
   },
+  {
+    name: "vue",
+    entry: "http://localhost:8002/",
+    container: "#micro-app-container",
+    activeRule: "/app/vue",
+  },
 ];

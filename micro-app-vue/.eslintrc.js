@@ -10,8 +10,9 @@ module.exports = {
       version: "detect",
     },
   },
-  parser: "@typescript-eslint/parser",
+  parser: "vue-eslint-parser",
   parserOptions: {
+    parser: "@typescript-eslint/parser",
     ecmaFeatures: {
       jsx: true,
     },
@@ -20,17 +21,15 @@ module.exports = {
   },
   extends: [
     "plugin:@typescript-eslint/recommended",
+    "plugin:vue/vue3-recommended",
     "plugin:prettier/recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
+    "@vue/typescript",
     "prettier/@typescript-eslint", //去掉@typescript-eslint中和prettier冲突的规则
   ],
-  plugins: ["prettier", "@typescript-eslint", "react", "react-hooks"],
+  plugins: ["prettier", "@typescript-eslint", "vue"],
   rules: {
     "@typescript-eslint/no-unused-vars": ["error"],
     "@typescript-eslint/no-var-requires": "off",
-    "react/prop-types": "off",
-    "react/display-name": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
   },
 };

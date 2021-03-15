@@ -17,11 +17,10 @@ module.exports = merge(baseConfig, {
     libraryTarget: "umd",
     publicPath: "/",
   },
-  stats: false, // 清除多余日志
   plugins: [
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
-        messages: ["You application is running here http://localhost:8001"],
+        messages: ["You application is running here http://localhost:8002"],
       },
     }),
     // new CopyWebpackPlugin({
@@ -36,16 +35,15 @@ module.exports = merge(baseConfig, {
     // }),
     new webpack.HotModuleReplacementPlugin(),
   ],
-  // webpack4之后配置有修改：changelog
-  // https://github.com/webpack/webpack-dev-server/blob/08a83a65f5c500a648c12faa2fa03122ee380c8b/CHANGELOG.md#400-beta0-2020-11-27
+  stats: false, // 清除多余日志
   devServer: {
     static: path.join(__dirname, "../dist"),
-    port: 8001,
+    port: 8002,
     compress: true,
     hot: true,
     openPage: "index.html",
     // publicPath: "/", // webpack4之后被移到了static中
-    // quiet: true, // webpack4之后去掉了quiet, 使用webpack中的stats模块
+    // quiet: true,
     historyApiFallback: true,
     overlay: {
       warnings: true,
