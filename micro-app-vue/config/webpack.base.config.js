@@ -116,6 +116,7 @@ module.exports = {
             options: {
               limit: 8192,
               name: "img/[name]_[contenthash:8].[ext]",
+              publicPath: "http://localhost:8002", // 配合qiankun修改静态资源的路径
             },
           },
           {

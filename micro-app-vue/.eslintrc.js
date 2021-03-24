@@ -25,6 +25,7 @@ module.exports = {
     "plugin:prettier/recommended",
     "@vue/typescript",
     "prettier/@typescript-eslint", //去掉@typescript-eslint中和prettier冲突的规则
+    "prettier/vue", // 去掉冲突规则
   ],
   plugins: ["prettier", "@typescript-eslint", "vue"],
   rules: {
