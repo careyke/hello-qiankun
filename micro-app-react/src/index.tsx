@@ -6,9 +6,10 @@ import App from "./App";
 const localRoot = document.querySelector("#app");
 
 const render = (props: CommonObject) => {
-  const { container } = props;
+  const { container, getSharedData } = props;
   const root = container ? container.querySelector("#app") : localRoot;
-  ReactDOM.render(<App />, root);
+  const { count } = getSharedData();
+  ReactDOM.render(<App data={count} />, root);
 };
 
 // 独立渲染

@@ -1,21 +1,58 @@
+import { useEffect, useState } from "react";
 import {
   registerMicroApps,
   start,
   addGlobalUncaughtErrorHandler,
+  removeGlobalUncaughtErrorHandler,
+  initGlobalState,
+  MicroAppStateActions,
 } from "qiankun";
 
 import { microAppOptions } from "./microAppConfig";
+import { getSharedData } from "./sharedData";
 
-/**
- * 注册子应用
- */
-registerMicroApps(microAppOptions);
+export const useQiankun = () => {
+  useEffect(() => {
+    const errorHandler = (event: Event | string) => {
+      console.log(event);
+    };
 
-/**
- * 添加全局的未捕获异常处理器
- */
-addGlobalUncaughtErrorHandler((event) => {
-  console.log(event);
-});
+    /**
+     * 注册子应用
+     */
+    registerMicroApps(
+      microAppOptions.map((option) => {
+        option.props = { getSharedData };
+        return option;
+      })
+    );
 
-export default start;
+    /**
+     * 添加全局的未捕获异常处理器
+     */
+    addGlobalUncaughtErrorHandler(errorHandler);
+
+    // 启动qiankun
+    start();
+
+    return () => {
+      removeGlobalUncaughtErrorHandler(errorHandler);
+    };
+  }, []);
+};
+
+export const useQiankunCommunication = (props: CommonObject) => {
+  const [action] = useState<MicroAppStateActions>(() => {
+    return initGlobalState(props);
+  });
+
+  useEffect(() => {
+    action.setGlobalState(props);
+    action.onGlobalStateChange((state) => {
+      console.log("new state", state);
+    });
+    return () => {
+      action.offGlobalStateChange();
+    };
+  }, [props, action]);
+};
