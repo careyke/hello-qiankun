@@ -33,7 +33,9 @@ export const useQiankun = () => {
     addGlobalUncaughtErrorHandler(errorHandler);
 
     // 启动qiankun
-    start();
+    start({
+      sandbox: { experimentalStyleIsolation: true },
+    });
 
     return () => {
       removeGlobalUncaughtErrorHandler(errorHandler);
