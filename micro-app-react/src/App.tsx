@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from "react";
-import { message } from "antd";
+// import { message } from "antd";
 
 import classes from "./App.less";
 
@@ -10,7 +10,7 @@ interface AppProps {
 const App: FC<AppProps> = (props) => {
   const { data } = props;
   useEffect(() => {
-    message.error("error");
+    // message.error("error");
   }, []);
 
   return (
