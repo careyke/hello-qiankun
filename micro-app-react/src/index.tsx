@@ -6,10 +6,10 @@ import App from "./App";
 const localRoot = document.querySelector("#app");
 
 const render = (props: CommonObject) => {
-  const { container, getSharedData } = props;
+  const { container, count } = props;
   const root = container ? container.querySelector("#app") : localRoot;
-  const { count } = getSharedData();
-  ReactDOM.render(<App data={count} />, root);
+  // const { count } = getSharedData();
+  ReactDOM.render(<App data={count || 0} />, root);
 };
 
 // 独立渲染
@@ -30,4 +30,9 @@ export const unmount = async (props: CommonObject) => {
   const { container } = props;
   const root = container ? container.querySelector("#app") : localRoot;
   ReactDOM.unmountComponentAtNode(root);
+};
+
+export const update = async (props: CommonObject) => {
+  console.log("update");
+  console.log(props);
 };
