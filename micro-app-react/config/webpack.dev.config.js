@@ -43,13 +43,16 @@ module.exports = merge(baseConfig, {
     port: 8001,
     compress: true,
     hot: true,
-    openPage: "index.html",
-    // publicPath: "/", // webpack4之后被移到了static中
-    // quiet: true, // webpack4之后去掉了quiet, 使用webpack中的stats模块
+    open: ["index.html"],
+    // openPage: "index.html", // webpack-dev-server4之后被移除，使用open统一配置
+    // publicPath: "/", // webpack-dev-server4之后被移到了static中
+    // quiet: true, // webpack-dev-server4之后去掉了quiet, 使用webpack中的stats模块
     historyApiFallback: true,
-    overlay: {
-      warnings: true,
-      errors: true,
+    client: {
+      overlay: {
+        warnings: true,
+        errors: true,
+      },
     },
     // 解决跨域
     headers: {

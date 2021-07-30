@@ -33,17 +33,20 @@ module.exports = merge(baseConfig, {
     new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
-    contentBase: path.join(__dirname, "../dist"),
+    static: path.join(__dirname, "../dist"),
     port: 8000,
     compress: true,
     hot: true,
-    openPage: "index.html",
-    publicPath: "/", // 需要配置，否则找不到目录
+    open: ["index.html"],
+    // openPage: "index.html", // webpack-dev-server4之后被移除，使用open统一配置
+    // publicPath: "/", // webpack-dev-server4之后被移到了static中
+    // quiet: true, // webpack-dev-server4之后去掉了quiet, 使用webpack中的stats模块
     historyApiFallback: true,
-    quiet: true,
-    overlay: {
-      warnings: true,
-      errors: true,
+    client: {
+      overlay: {
+        warnings: true,
+        errors: true,
+      },
     },
   },
 });
